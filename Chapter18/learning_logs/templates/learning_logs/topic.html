@@ -1,0 +1,26 @@
+{% extends "learning_logs/base.html" %}
+
+{% block header %}
+  <h2>{{ topic }}</h2>
+{% endblock header %}
+
+{% block content %}
+  <p><a href="#">添加新的学习记录</a> </p>
+  {% for entry in entries %}
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3>
+            {{ entry.create_time|date:'M d, Y H:i' }}
+            <small>
+                <a href="#">编辑学习记录</a>
+            </small>
+        </h3>
+      </div>
+      <div class="panel-body">
+          {{ entry.text|linebreaks }}
+      </div>
+    </div>
+  {% empty %}
+    暂无学习记录.
+  {% endfor %}
+{% endblock content %}
